@@ -1,6 +1,6 @@
 from os import environ
 from dotenv import load_dotenv
-
+import textwrap
 
 class GenericLog:
 
@@ -47,3 +47,15 @@ class GenericLog:
         kwargs.update(default_nodes)
         message = self._format_message(**kwargs)
         self.log.info(message, extra={'run_id': self.run_id})
+
+    def _sanitize_json(text: str) -> str:
+        sanitezed = text.replace("\"", "\'") \
+            .replace("{", "") \
+            .replace("}", "") \
+            .replace("[", "") \
+            .replace("]", "") \
+            .replace("]", "")
+
+        sanitezed = "".join(textwrap.wrap(sanitezed))
+
+        return sanitezed

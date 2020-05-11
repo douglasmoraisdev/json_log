@@ -1,7 +1,6 @@
 import logging
 import json
 from uuid import uuid4
-from .utils.data_format import sanitize_json
 from .generic_log import GenericLog
 
 
@@ -38,7 +37,7 @@ class AppLog(GenericLog):
             elif (type(value) is float) or (type(value) is int):
                 nodes_list.append(f'\"{key}\" : {value}')
             else:
-                nodes_list.append(f'\"{key}\" : \"{sanitize_json(value)}\"')
+                nodes_list.append(f'\"{key}\" : \"{self._sanitize_json(value)}\"')
 
         formated_message = ','.join(nodes_list)
 
