@@ -5,6 +5,7 @@ import textwrap
 class GenericLog:
 
     log_level = environ.get('LOG_LEVEL', 'ERROR')
+    log_path = environ.get('LOG_LOCAL_PATH', 'ERROR')
 
     # Override esse método caso necessario nas classes filhas
     def _format_message(self, **kwargs):
@@ -48,7 +49,7 @@ class GenericLog:
         message = self._format_message(**kwargs)
         self.log.info(message, extra={'run_id': self.run_id})
 
-    def _sanitize_json(text: str) -> str:
+    def _sanitize_json(self, text: str) -> str:
         sanitezed = text.replace("\"", "\'") \
             .replace("{", "") \
             .replace("}", "") \

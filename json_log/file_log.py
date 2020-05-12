@@ -2,6 +2,8 @@ import logging
 import json
 from uuid import uuid4
 from .generic_log import GenericLog
+from os import environ
+from pathlib import Path
 
 
 class AppLog(GenericLog):
@@ -11,7 +13,10 @@ class AppLog(GenericLog):
         app_log = logging.getLogger(log_name)
         app_log.setLevel(logging.getLevelName(self.log_level))
 
-        ch = logging.FileHandler(f'./log/{log_name}.log')
+        path = Path(self.log_path)
+        path.mkdir(parents=True, exist_ok=True)
+
+        ch = logging.FileHandler(f'{self.log_path}{log_name}.log')
         ch.setLevel(logging.getLevelName(self.log_level))
 
         formatter = logging.Formatter('{'
@@ -43,4 +48,6 @@ class AppLog(GenericLog):
 
         return formated_message
 
-applog = AppLog('processa_pedidos')
+
+log_level = environ.get('LOG_NAME', 'json_log')
+applog = AppLog(log_level)
