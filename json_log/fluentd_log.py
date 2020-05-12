@@ -8,8 +8,6 @@ from .generic_log import GenericLog
 from dotenv import load_dotenv
 load_dotenv()
 
-from json_log.utils.data_format import sanitize_json
-
 
 class FluentdLog(GenericLog):
 
