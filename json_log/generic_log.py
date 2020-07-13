@@ -1,11 +1,14 @@
-from os import environ
 from dotenv import load_dotenv
 import textwrap
+import yaml
+
+config = yaml.safe_load(open('config.yml'))
+
 
 class GenericLog:
 
-    log_level = environ.get('LOG_LEVEL', 'ERROR')
-    log_path = environ.get('LOG_LOCAL_PATH', 'ERROR')
+    log_level = config['LOG_LEVEL']
+    log_path = config['LOG_LOCAL_PATH']
 
     # Override esse método caso necessario nas classes filhas
     def _format_message(self, **kwargs):

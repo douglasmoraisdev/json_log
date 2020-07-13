@@ -2,9 +2,10 @@ import logging
 import json
 from uuid import uuid4
 from .generic_log import GenericLog
-from os import environ
 from pathlib import Path
+import yaml
 
+config = yaml.safe_load(open('config.yml'))
 
 class AppLog(GenericLog):
 
@@ -48,6 +49,6 @@ class AppLog(GenericLog):
 
         return formated_message
 
-
-log_level = environ.get('LOG_NAME', 'json_log')
-applog = AppLog(log_level)
+log_level = config['LOG_LEVEL']
+log_name = config['LOG_NAME']
+applog = AppLog(log_name)

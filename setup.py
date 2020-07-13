@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="json_log",
-    version="0.0.1",
+    version="0.0.2",
     author="Douglas Morais",
     author_email="msantos.douglas@gmail.com",
     description="Logs on JSON format, for general purposes",
@@ -20,6 +20,7 @@ setuptools.setup(
     ],
 	install_requires=[
         'fluent-logger',
-        'python-dotenv'
+        'python-dotenv',
+        'pyyaml'
     ]    
 )

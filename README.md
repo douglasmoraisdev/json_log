@@ -21,15 +21,15 @@ $ pip install git+https://github.com/douglasmoraisdev/json_log#egg=json_log
 
 
 ## Configuração
-A Lib utiliza `variaveis de ambiente` para sua configuração. As mesmas podem ser encontradas no arquivo '.env.sample', e consumidas via arquivo .env, se for o padrão do projeto.
+A Lib utiliza `o arquivo config.yml` para sua configuração. As mesmas podem ser encontradas no arquivo 'sample.config.yml', e consumidas via arquivo .env, se for o padrão do projeto.
 
-```ini
-LOG_FLUENTD=true #true=utiliza as configuracoes de FluentD a seguir #false=utiliza log em arquivo
-LOG_FLUENTD_HOST=localhost #host do FluentD, se utilizado
-LOG_FLUENTD_PORT=24224 #porta do FluentD, se utilizado
-LOG_LEVEL=INFO #Nivel de log
-LOG_NAME=teste_log #Nome do arquivo de log, caso não use FluentD
-LOG_LOCAL_PATH=log/ #Path do log, caso não use FluentD
+```yml
+LOG_FLUENTD: true #true: utiliza as configuracoes de FluentD a seguir #false: utiliza log em arquivo
+LOG_FLUENTD_HOST: localhost #host do FluentD, se utilizado
+LOG_FLUENTD_PORT: 24224 #porta do FluentD, se utilizado
+LOG_LEVEL: INFO #Nivel de log
+LOG_NAME: teste_log #Nome do arquivo de log, caso não use FluentD
+LOG_LOCAL_PATH: log/ #Path do log, caso não use FluentD
 ```
 
 
